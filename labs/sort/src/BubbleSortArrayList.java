@@ -6,11 +6,12 @@ import java.util.Arrays;
 public class BubbleSortArrayList {
         private static int compares = 0;
         private static int swaps = 0;
+
         public static void main(String[] args) {
 //        int[] x = new int[] {2,4,1,4,23,44,2,4};
             ArrayList<Integer> x = new ArrayList<Integer> ();
-            for (int i = 0; i < x.size (); i++) {
-                x.set(i, (int)(Math.random () * 10));
+            for (int i = 0; i < 10000; i++) {
+                x.add((int)(Math.random () * 10));
             }
 
             long millis = System.currentTimeMillis() % 1000;

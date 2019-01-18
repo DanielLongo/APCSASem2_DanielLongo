@@ -7,12 +7,12 @@ public class InsertSortArrayList {
         public static void main(String[] args) {
 //        int[] x = new int[] {1,5,2,7, 2, 1,2,5,2,5,7,2};
             ArrayList<Integer> x = new ArrayList<Integer> ();
-            for (int i = 0; i < x.size (); i++) {
-                x.set(i, (int)(Math.random () * 10));
+            for (int i = 0; i < 10000; i++) {
+                x.add((int)(Math.random () * 10));
             }
 
             long millis = System.currentTimeMillis() % 1000;
-            Arrays.toString (insertSort (x));
+            Arrays.toString (insertSort (x).toArray ());
 //        System.out.println (Arrays.toString (insert (x, 4,1) ) );
             System.out.println ("time " + ((System.currentTimeMillis() % 1000)- millis));
             System.out.println ("swaps " + swaps );
@@ -33,7 +33,7 @@ public class InsertSortArrayList {
             swaps++;
             ArrayList<Integer> out = new ArrayList<Integer> ();
             int counter = 0;
-            for (int i = 0; i < out.size(); i++) {
+            for (int i = 0; i < x.size (); i++) {
                 if  (counter == targetIndex) {
                     out.add (x.get(valIndex));
                     i++;
@@ -79,5 +79,3 @@ public class InsertSortArrayList {
         }
 
     }
-
-}
