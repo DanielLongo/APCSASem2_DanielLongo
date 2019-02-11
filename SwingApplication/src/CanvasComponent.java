@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.*;
 
-public class CanvasComponent extends JComponent  implements MouseListener, MouseMotionListener, ActionListener{
+public class CanvasComponent extends JComponent  implements MouseListener, MouseMotionListener, ActionListener, KeyListener{
     private int x;
     private int y;
     private int width;
@@ -18,6 +18,7 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
     int gutterX;
     int gutterY;
     Timer animationTimer;
+    int motionSpeed;
 
 
     CanvasComponent(int width, int height) {
@@ -34,6 +35,7 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
         gutterY = 10;
         animationTimer = new Timer(20);
         animationTimer.start ();
+        motionSpeed = 1;
 
     }
 
@@ -93,8 +95,27 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
     @Override
     public void actionPerformed(ActionEvent e) {
         Dimension componentSizeDimension = getSize ();
-        mouseFromX += animationDeltaX - mouseFromX;
-        mouseFromY += animationDeltaY - mouseFromY;
+        mouseFromX += animationDeltaX*motionSpeed - mouseFromX;
+        mouseFromY += animationDeltaY*motionSpeed - mouseFromY;
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        char keyChar = e.getKeyChar ();
+        if (keyChar == '+') this.motionSpeed ++;
+        if (keyChar == '-') this.motionSpeed --;
+
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }
