@@ -1,5 +1,5 @@
 import javafx.animation.AnimationTimer;
-
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -33,8 +33,8 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
         animationDeltaY = 0;
         gutterX = 10;
         gutterY = 10;
-        animationTimer = new Timer(20);
-        animationTimer.start ();
+//        animationTimer = new Timer();
+//        animationTimer.start ();
         motionSpeed = 1;
 
     }
@@ -45,11 +45,34 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseMoved(MouseEvent e) {
+        int MouseX=e.getX();
+        int MouseY=e.getY();
+        System.out.println("mouse: "+ x+","+y);//these co-ords are relative to the component
+        System.out.println("actual" + this.x+","+this.y);//these co-ords are relative to the component
+        while (mouseFromX != MouseX &&  y != MouseY) {
+            repaint ();
+            System.out.println("in loop: " +mouseFromX+","+mouseFromY);//these co-ords are relative to the component
+            System.out.println ("A" );
+            System.out.println ("B" );
+            try
+            {
+                Thread.sleep(1);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println ("C" );
+            if (mouseFromX < MouseX) mouseFromX += this.motionSpeed;
+            if (mouseFromX > MouseX) mouseFromX -= this.motionSpeed;
+            if (mouseFromY < MouseY) mouseFromY += this.motionSpeed;
+            if (mouseFromY > MouseY) mouseFromY -= this.motionSpeed;
+        }
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {
         System.out.println ("Event" );
         if ((e.getX () < mouseFromX + 20) && (e.getX () > mouseFromX - 20)) {
             if ((e.getY () < mouseFromY + 20) && (e.getY () > mouseFromY - 20)) {
@@ -70,6 +93,7 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
     @Override
     public void mouseEntered(MouseEvent e) {
 
+
     }
 
     @Override
@@ -89,7 +113,7 @@ public class CanvasComponent extends JComponent  implements MouseListener, Mouse
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
     }
 
     @Override
