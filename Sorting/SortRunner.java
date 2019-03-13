@@ -214,7 +214,7 @@ public class SortRunner
 //        printOneStatistic(outerSorterArray, ELAPSED_TIME_STAT_ID, name);
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         //         printHeader();
         Sorter[][] selectionSorterArray = new Sorter[lengthArray.length][];
         Sorter[][] insertionSorterArray = new Sorter[lengthArray.length][];
