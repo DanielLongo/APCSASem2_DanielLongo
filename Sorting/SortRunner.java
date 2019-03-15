@@ -233,11 +233,15 @@ public class SortRunner
             //             heapSorterArray[lengthIndex] = runStandardSorts(heapSorter, length, "Heap sort");
             QuickSorter quickSorter = new QuickSorter();
             quickSorterArray[lengthIndex] = runStandardSorts(quickSorter, length, "Quick sort");
+            SelectionSorter selectionSorter = new SelectionSorter ();
+            selectionSorterArray[lengthIndex] = runStandardSorts (selectionSorter, length, "Selection sort");
+            InsertionSorter insertionSorter= new InsertionSorter ();
+            insertionSorterArray[lengthIndex] = runStandardSorts (insertionSorter, length, "Insertion sort");
         }
-        // printStandardResults(selectionSorterArray, "Selection sort");
-        // printStandardResults(insertionSorterArray, "Insertion sort");
+         printStandardResults(selectionSorterArray, "Selection sort");
+         printStandardResults(insertionSorterArray, "Insertion sort");
         // printStandardResults(mergeSorterArray, "Merge sort");
         // printStandardResults(heapSorterArray, "Heap sort");
-        printStandardResults(quickSorterArray, "Quick sort");    
+        printStandardResults(quickSorterArray, "Quick sort");
     }
 }

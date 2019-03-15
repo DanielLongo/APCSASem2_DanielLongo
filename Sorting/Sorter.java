@@ -70,6 +70,11 @@ public abstract class Sorter implements Cloneable
             a[index1] = a[index2];
             a[index2] = value;
     }
+
+    public boolean equals(int a, int b) {
+        comparisonCount ++;
+        return (a == b);
+    }
     
     public void move(int[] a, int destIndex, int sourceIndex) {
                 moveCount++;
