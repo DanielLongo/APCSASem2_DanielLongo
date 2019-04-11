@@ -24,5 +24,5 @@ public class climbingClub {
         this.swap(climbList.size(), targetIndex)
 
 }
-//yes and no
-}
+//for c
+//no and yes
