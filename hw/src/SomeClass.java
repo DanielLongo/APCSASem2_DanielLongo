@@ -34,8 +34,8 @@ public class SomeClass {
             out.add("");
         }
         for (String name: x) {
-            while (used(used, index) == false) {
-                index = (int) Math.random () * x.size ();
+            while (!used (used, index)) {
+                index = (int) (Math.random ( ) * x.size ( ));
             }
             out.add(index, name);
         }
