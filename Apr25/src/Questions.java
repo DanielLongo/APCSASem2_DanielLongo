@@ -1,3 +1,5 @@
+import com.sun.imageio.plugins.common.I18N;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,5 +51,36 @@ public class Questions {
         return null;
     }
 
-}
+    public ArrayList<Integer> findIntersection(int[] a, int[] b, int[] c) {
+        ArrayList<Integer> out = new ArrayList<Integer> ();
+        int curValue;
+        boolean bb = false;
+        boolean cc = false;
+        for (int i = 0; i < a.length; i++) {
+            curValue = a[i];
+            bb = false;
+            cc = false;
+            for (int j = 0; j < a.length; j++) {
+                if (b[i] == curValue) bb = true;
+                if (c[i] == curValue) cc = true;
+                if (cc && bb) {
+                    out.add(curValue);
+                    break;
+                }
+            }
+        }
+        return out;
+    }
+    public int[][] flip(int[][] mat) {
+        int[][] out = new int[mat.length][mat[0].length];
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                out[mat.length - i][mat[0].length] = mat[i][j];
+            }
+        }
+        return out;
+
+        }
+    }
+
 
